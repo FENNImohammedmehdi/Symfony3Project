@@ -1,0 +1,72 @@
+mon_marsupilami_homepage:
+    path:     /
+    defaults: { _controller: MonMarsupilamiBundle:Default:index }
+
+mon_marsupilami_listes:
+    path:     /listes
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:listes }
+    
+mon_marsupilami_details:
+    path:     /details/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:details }
+    
+mon_marsupilami_modification:
+    path:     /modification/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:modification }
+
+mon_marsupilami_suppression:
+    path:     /suppression/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:suppression }
+    
+mon_marsupilami_invitation:
+    path:     /invitation/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:invitation }    
+    
+mon_marsupilami_anullation_amitie:
+    path:     /anullation_amitie/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:anullation_amitie } 
+    
+    
+    
+    
+    
+    
+show_marsupilamis:
+    path:     /api/Utilisateurs/details/{name}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:showMarsupilamis }
+    methods:  [GET]
+     
+show_listMarsupilamis:
+    path:     /api/Utilisateurs
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:listMarsupilamis }
+    methods:  [GET]
+    
+show_listAmisMarsupilamis:
+    path:     /api/Utilisateurs/AmisUtilisateur/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:listAmisMarsupilamis }
+    methods:  [GET]
+
+delete_marsupilamis:
+    path:     /api/Utilisateurs/delete/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:deleteMarsupilamis }
+    
+    
+create_marsupilamis:
+    path:     /api/Utilisateurs/create
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:createMarsupilamis }
+    methods:  [PUT]
+
+update_marsupilamis:
+    path:     /api/Utilisateurs/update/{id}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:updateMarsupilamis }
+    methods:  [PUT]
+    
+invite_marsupilamis:
+    path:     /api/Utilisateurs/invite/{name}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:inviteFriend }
+    methods:  [PUT]
+    
+deleteFriend_marsupilamis:
+    path:     /api/Utilisateurs/deleteFriend/{name}
+    defaults: { _controller: MonMarsupilamiBundle:Marsupilamis\Marsupilami:deleteFriend }
+    methods:  [PUT]

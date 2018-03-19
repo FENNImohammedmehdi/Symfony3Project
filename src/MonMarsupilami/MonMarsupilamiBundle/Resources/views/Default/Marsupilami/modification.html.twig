@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <!-- BASIC FORM ELELEMNTS -->
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right"></i> Modification</h4>
+
+                <form method="POST" class="form-horizontal style-form"  > 
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input value="{{ entity.Username }}" class="form-control col-md-7 col-xs-12" 
+                                   name="Username"  required="required" type="text">
+                        </div>
+                    </div>
+                                   
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Adresse mail</label>
+                        <div class="col-sm-10">
+                            <input value="{{ entity.email }}"  class="form-control col-md-7 col-xs-12" 
+                                   name="email"  required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Age</label>
+                        <div class="col-sm-10">
+                            <input value="{{ entity.age }}"  class="form-control col-md-7 col-xs-12" 
+                                   name="age" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Famille</label>
+                        <div class="col-sm-10">
+                            <input value="{{ entity.famille }}" 
+                                   class="form-control col-md-7 col-xs-12" 
+                                   name="famille"  required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Race</label>
+                        <div class="col-sm-10">
+                            <input value="{{ entity.race }}"  class="form-control col-md-7 col-xs-12" 
+                                   name="race"  required="required" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">Nourriture</label>
+                        <div class="col-sm-10">
+                            <input value="{{ entity.nourriture }}"  class="form-control col-md-7 col-xs-12" 
+                                   name="nourriture"  required="required" type="text">
+                        </div>
+                    </div>
+                    <a class="btn btn-warning" type="button" href="{{ path('mon_marsupilami_listes') }}">Retour</a>
+                    <button id="send" type="submit" class="btn btn-success"   >Enregistrer</button>
+
+                </form>
+            </div>
+        </div><!-- col-lg-12-->      	
+    </div><!-- /row -->
+{% endblock %}
+

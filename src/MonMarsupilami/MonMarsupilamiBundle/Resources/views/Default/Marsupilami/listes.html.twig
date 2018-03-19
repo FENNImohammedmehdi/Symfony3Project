@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row mt">
+        <div class="col-md-12">
+            <div class="content-panel">
+
+                <table id="myTable" class="table table-striped table-advance table-hover">
+                    <h4><i class="fa fa-angle-right"></i> Listes des Marsupilamis</h4>
+                    <hr>
+                    <h4><i class="fa fa-search"></i><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Chercher par nom..">
+                    </h4>
+                    <thead>
+                        <tr>
+                            <th><i class="fa fa-bullhorn"></i> Nom</th>
+                            <th><i class="fa fa-bookmark"> </i>Mail</th>
+                            <th><i class="fa fa-bookmark"></i> Famille</th>
+                            <th><i class=" fa fa-edit"></i> Race</th>
+                            <th><i class=" fa fa-edit"></i> Age</th>
+                            <th><i class=" fa fa-edit"></i> Nourriture</th>
+                    <center><th><i class=" fa fa-edit"></i> Etat</th></center>
+                    <center><th><i class=" fa fa-edit"></i> Amitié</th></center>
+                    <th><i class="fa fa-archive"> </i>Actions</th>
+
+                    <th></th>
+                    </tr>
+                    </thead>
+
+
+                    {% for marsupilami in marsupilamis %}
+                        <tbody>
+                            <tr>
+
+                                <td><a href="{{ path('mon_marsupilami_details', { 'id' : marsupilami.id }) }}">{{ marsupilami.username }}</a></td>
+                                <td class="hidden-phone">{{ marsupilami.email }}</td>
+                                <td>{{ marsupilami.famille }}</td>
+                                <td>{{ marsupilami.race }}</span></td>
+                                <td>{{ marsupilami.age }}</span></td>
+                                <td>{{ marsupilami.nourriture }}</span></td>
+                                <td>
+                                    {% if app.user ==  marsupilami %}
+                                        <span class="label label-success">Utilisateur connecté</span>
+                                    {% else %}
+                                        {% if marsupilami  in marsupilamis2  %}
+                                            <span class="label label-success">Membre</span>
+                                        {% endif %}
+                                        {% if marsupilami not in marsupilamis2  %}
+                                            <span class="label label-danger">Non membre</span>
+                                        {% endif %}
+                                    {% endif %}
+
+
+
+                                    {# <span class="label label-primary">Invité</span>#}
+                                </td>
+
+                                <td>
+                                    {% if app.user ==  marsupilami %}
+
+                                    {% else %}
+                                        {% if marsupilami not in marsupilamis2 %}
+                                            <a class="btn btn-info btn-xs"  href="{{ path('mon_marsupilami_invitation', { 'id' : marsupilami.id }) }}">Inviter<i class="fa fa-check"></i></a>
+                                            {% else %}
+                                            <a class="btn btn-danger btn-xs" href="{{ path('mon_marsupilami_anullation_amitie', { 'id' : marsupilami.id }) }}">Retirer<i class="fa fa-trash-o"></i></a>
+                                            {% endif %}
+                                        {% endif %}
+                                </td>
+                                <td>
+                                    <a class="btn btn-success btn-xs" href="{{ path('mon_marsupilami_details', { 'id' : marsupilami.id }) }}">Voir<i class="fa fa-check"></i></a>
+                                    <a class="btn btn-primary btn-xs" href="{{ path('mon_marsupilami_modification', { 'id' : marsupilami.id }) }}">Editer<i class="fa fa-pencil" ></i></a>
+                                        {% if app.user ==  marsupilami %}
+                                        {% else %}
+                                        <a class="btn btn-danger btn-xs" href="{{ path('mon_marsupilami_suppression', { 'id' : marsupilami.id }) }}">Supprimer<i class="fa fa-trash-o "></i></a>
+                                        {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div><!-- /content-panel -->
+        </div><!-- /col-md-12 -->
+    </div><!-- /row -->   
+    <script>
+
+        function myFunction() {
+            // Declare variables 
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+            
+            
+        }
+    </script>
+{% endblock %}

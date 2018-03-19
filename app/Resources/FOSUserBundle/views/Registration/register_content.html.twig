@@ -1,0 +1,37 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div id="login-page">
+    <div class="container">
+        
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'form-login'}}) }}
+            <h2 class="form-login-heading">Inscrivez-vous</h2> 
+
+            <div class="form-group" id="fos_user_registration_form">
+                <div class="login-wrap">
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control','placeholder': 'form.email'|trans } }) }}
+                    {{ form_errors(form.email) }}
+                    <br>
+                    {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username'|trans } }) }}
+                    {{ form_errors(form.username) }}
+                    <br>
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'form.password'|trans } }) }}
+                    {{ form_errors(form.plainPassword.first) }}
+                    <br>
+                    {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'form.password_confirmation'|trans } }) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                    <br>
+                    {{ form_rest(form) }}
+                    <br>
+                    <button class="btn btn-theme btn-block" type="submit">
+                        <i class="fa fa-lock"></i> {{ 'registration.submit'|trans }}</button>
+
+                    <hr>
+                </div>
+            </div>
+        </form>	  	
+
+    </div>
+</div>
+
+
+{{ form_end(form) }}

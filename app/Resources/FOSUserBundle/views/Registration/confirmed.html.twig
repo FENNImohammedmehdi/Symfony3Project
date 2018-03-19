@@ -1,0 +1,31 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block fos_user_content %}
+
+    <form  method="POST">
+        <div>
+            <br><br><br><br><br><br><br><br><br><br>
+            <!-- Modal -->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Bienvenue!</h4>
+                    </div><br><br><br>
+                    <center><p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p> </center>
+                    <div class="modal-body">
+                        {% if targetUrl %}
+                            <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+                        {% endif %}                </div>
+                    <div class="modal-footer">
+                     <a class="btn btn-theme" href="{{ path('mon_marsupilami_listes') }}">Page d'Acceuil</a></li>                       
+
+                    </div>
+                </div>
+            </div>
+            <!-- modal -->
+
+        </div>
+
+    </form>
+{% endblock fos_user_content %}
